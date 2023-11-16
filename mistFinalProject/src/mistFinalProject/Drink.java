@@ -16,11 +16,3 @@ public class Drink {
 		System.out.println(drinkName + " " + drinkSize);
 	}
 }
-public class Tea extends Drink {
-	private int percentSweetener;
-}
-public class Coffee extends Drink {
-private int numShots;
-
-}
-}
