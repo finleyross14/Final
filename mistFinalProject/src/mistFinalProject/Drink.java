@@ -1,5 +1,6 @@
 package mistFinalProject;
 import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Drink {
 	private String drinkName;
@@ -7,6 +8,7 @@ public class Drink {
 	private double price;
 	private static final int[] sizes = {12, 16, 24};
 	private static HashMap<String, Double> menu = new HashMap<String, Double>();
+	private static ArrayList<Drink> orderHistory = new ArrayList<Drink>();
 	
 
 	public Drink() {
@@ -43,8 +45,7 @@ public class Drink {
 	public void printItem() {
 		System.out.println(drinkName + " " + drinkSize);
 	}
-	
-	
+
 
 }
 
