@@ -8,6 +8,7 @@ public class Drink {
 	private static final int[] sizes = {12, 16, 24};
 	private static HashMap<String, Double> menu = new HashMap<String, Double>();
 	
+
 	public Drink() {
 		menu.put("Classic Milk Tea", 5.00);
 		menu.put("Taro Milk Tea", 5.50);
