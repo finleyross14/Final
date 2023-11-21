@@ -1,5 +1,8 @@
 package mistFinalProject;
 
+import java.util.HashSet;
+import java.util.Scanner;
+
 public class Customer {
 	private int id;
 	private String name;
@@ -8,11 +11,22 @@ public class Customer {
 	private int numDiscountReward;
 	private int numDrinkReward;
 	private static int numCustomers;
-	
+  	private static HashSet<Integer> customerIDs = new HashSet<Integer>();
+			
 	public Customer() {
+		customerIDs.add(1001);
+		customerIDs.add(1002);
+		customerIDs.add(1003);
+		customerIDs.add(1004);
+		customerIDs.add(1005);
 		numCustomers++;
 	}
 	public Customer(int i, String n, double p) {
+		customerIDs.add(1001);
+		customerIDs.add(1002);
+		customerIDs.add(1003);
+		customerIDs.add(1004);
+		customerIDs.add(1005);
 		id = i;
 		name = n;
 		points = p;
