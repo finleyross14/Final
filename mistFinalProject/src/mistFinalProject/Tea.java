@@ -1,6 +1,7 @@
 package mistFinalProject;
 
-public class Tea extends Drink {       
+public class Tea extends Drink {
+	
 	private int percentSweetener;
 
 	public int getPercentSweetener() {
@@ -9,5 +10,7 @@ public class Tea extends Drink {
 
 	public void setPercentSweetener(int percentSweetener) {
 		this.percentSweetener = percentSweetener;
-	}      
-}                                      
+	}
+	
+	
+}
