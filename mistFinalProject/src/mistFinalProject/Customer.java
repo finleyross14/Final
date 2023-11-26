@@ -14,19 +14,10 @@ public class Customer {
   	private static HashSet<Integer> customerIDs = new HashSet<Integer>();
 			
 	public Customer() {
-		customerIDs.add(1001);
-		customerIDs.add(1002);
-		customerIDs.add(1003);
-		customerIDs.add(1004);
-		customerIDs.add(1005);
 		numCustomers++;
 	}
 	public Customer(int i, String n, double p) {
-		customerIDs.add(1001);
-		customerIDs.add(1002);
-		customerIDs.add(1003);
-		customerIDs.add(1004);
-		customerIDs.add(1005);
+		customerIDs.add(i);
 		id = i;
 		name = n;
 		points = p;
@@ -38,6 +29,7 @@ public class Customer {
 	}
 	public void setId(int id) {
 		this.id = id;
+		customerIDs.add(id);
 	}
 	public String getName() {
 		return name;
