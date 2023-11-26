@@ -44,14 +44,13 @@ public class Tester {
 			System.out.println("What is your drink of choice? (Please type the exact name case sensitive)");
 			String drinkOrder = scnr.nextLine();
 			//Testing for if drink exists
-			/*if(Drink.menu.keySet().contains(drinkOrder) != true) {
+			if(Drink.menu.keySet().contains(drinkOrder) != true) {
 				while(Drink.menu.keySet().contains(drinkOrder) != true) {
 					System.out.println("Invalid input, please type the exact name case sensitive.");
 					drinkOrder = scnr.nextLine();
 				}
-			}*/
+			}
 			drink.setDrinkName(drinkOrder);
-			System.out.println(drink.getDrinkName());
 			System.out.println("What size would you like: 12oz, 16oz, or 24oz?");
 			System.out.println("Please input 12, 16, or 24.");
 			int s = scnr.nextInt();
@@ -71,6 +70,32 @@ public class Tester {
 		//Order logic for tea
 		else if(choice == 2) {
 			Tea drink = new Tea();
+			System.out.println("What is your drink of choice? (Please type the exact name case sensitive)");
+			String drinkOrder = scnr.nextLine();
+			//Testing for if drink exists
+			/*if(Drink.menu.keySet().contains(drinkOrder) != true) {
+				while(Drink.menu.keySet().contains(drinkOrder) != true) {
+					System.out.println("Invalid input, please type the exact name case sensitive.");
+					drinkOrder = scnr.nextLine();
+				}
+			}*/
+			drink.setDrinkName(drinkOrder);
+			System.out.println("What size would you like: 12oz, 16oz, or 24oz?");
+			System.out.println("Please input 12, 16, or 24.");
+			int s = scnr.nextInt();
+			scnr.nextLine();
+			drink.setDrinkSize(s);
+			System.out.println("What topping would you like??");
+			System.out.println("(Please type the exact name case sensitive, type 'No Topping' for no topping.) ");
+			String t = scnr.nextLine();
+			drink.setTopping(t);
+			System.out.println("What percent sweet?");
+			System.out.println("Please input a number 0-100: ");
+			int e = scnr.nextInt();
+			scnr.nextLine();
+			drink.setPercentSweet(e);
+			double total = drink.priceDrink();
+			System.out.println("Your total is: $" + total);
 		}
 		
 		

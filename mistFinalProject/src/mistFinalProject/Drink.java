@@ -26,6 +26,7 @@ public class Drink {
 		menu.put("Flavored Jelly", 1.00);
 		menu.put("Popping Boba", 1.50);
 		menu.put("Cream Topping", 1.00);
+		menu.put("No Topping", 0.00);
 	}
 	
 

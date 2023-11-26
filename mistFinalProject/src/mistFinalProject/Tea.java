@@ -17,10 +17,10 @@ public class Tea extends Drink {
 	}
 	public double priceDrink() {
 		double p = menu.get(drinkName);
-		if(drinkSize == 16) {
+		if(drinkSize == sizes[1]) {
 			p += 1;
 		}
-		else if(drinkSize == 24) {
+		else if(drinkSize == sizes[2]) {
 			p += 2;
 		}
 		
