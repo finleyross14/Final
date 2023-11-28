@@ -14,8 +14,6 @@ public class Tester {
 		Scanner scnr = new Scanner(System.in);
 		
 		Drink.intro();
-		
-	
 		int choice = Drink.coffeeOrTea(scnr);
 		
 		Coffee coffee = new Coffee();

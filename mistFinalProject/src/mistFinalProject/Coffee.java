@@ -86,10 +86,4 @@ public class Coffee extends Drink {
 		System.out.println();
 	}
 	
-	/*public double xx(double total, int e) {
-		this.setNumShots(e);
-		total = this.priceDrink();
-		return total;
-	}*/
-	
 }

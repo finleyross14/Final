@@ -56,6 +56,17 @@ public class Customer {
 			return 0;
 		}
 	}
+	public int discountReward(int x) {
+		if(points > 50.00 * x) {
+			points -= 50.00 * x;
+			System.out.println("Discount reward applied.");
+			return 1;
+		}
+		else {
+			System.out.println("Insufficient point balance.");
+			return 0;
+		}
+	}
 	public int drinkReward() {
 		if(points > 200.00) {
 			points -= 200.00;

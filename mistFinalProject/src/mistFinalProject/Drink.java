@@ -2,6 +2,7 @@ package mistFinalProject;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.lang.Math;
 
 public class Drink {
 	protected String drinkName;
@@ -126,13 +127,31 @@ public class Drink {
 				int r = scnr.nextInt();
 				
 				if(r == 1) {
-					int x = Customer.customers.get(key).discountReward();
-					if(x == 1) {
-						total *= .85;
+					System.out.println("You may compund multiple rewards on this order, but it will still cost 50 points per redeemeed reward");
+					System.out.println("Do you wish to redeem multiple rewards? Type 1 for YES, Type 2 for NO");
+					int y = scnr.nextInt();
+					scnr.nextLine();
+					if(y == 2) {
+						int x = Customer.customers.get(key).discountReward();
+						if(x == 1) {
+							total *= .85;
+						}
+						else {
+							
+						}
 					}
-					else {
-						
+					else if(y == 1) {
+						System.out.println("How many rewards do you wish to redeem?");
+						int o = scnr.nextInt();
+						int x = Customer.customers.get(key).discountReward(o);
+						if(x == 1) {
+							total *= Math.pow(.85, o);
+						}
+						else {
+							
+						}
 					}
+					
 					
 				}
 				else if(r == 2) {
