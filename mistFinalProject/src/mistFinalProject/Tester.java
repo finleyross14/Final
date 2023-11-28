@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class Tester {
 
 	public static void main(String[] args) throws InterruptedException {
+		Customer Finley = new Customer(2193817908L, 100000.0);
+		Customer Jordan = new Customer(6789828708L, 2.0);
+		Customer.addToHashMap(Finley.getId(), Finley);
+		Customer.addToHashMap(Jordan.getId(), Jordan);
 		Drink m = new Drink();
 		Scanner scnr = new Scanner(System.in);
 		
@@ -39,8 +43,11 @@ public class Tester {
 			scnr.nextLine();
 		}
 		//Order logic for coffee
+		Coffee drink = new Coffee();
+		Tea teadrink = new Tea();
+		double total = 0.0;
 		if(choice == 1) {
-			Coffee drink = new Coffee();
+			
 			System.out.println("What is your drink of choice? (Please type the exact name case sensitive)");
 			String drinkOrder = scnr.nextLine();
 			//Testing for if drink exists
@@ -74,13 +81,13 @@ public class Tester {
 				}
 			}
 			drink.setNumShots(e);
-			double total = drink.priceDrink();
-			System.out.println("Your total is: $" + total);
+			Drink.orderHistory.add(drink);
+			total = drink.priceDrink();
 		}
 		
 		//Order logic for tea
 		else if(choice == 2) {
-			Tea drink = new Tea();
+			
 			System.out.println("What is your drink of choice? (Please type the exact name case sensitive)");
 			String drinkOrder = scnr.nextLine();
 			//Testing for if drink exists
@@ -90,7 +97,7 @@ public class Tester {
 					drinkOrder = scnr.nextLine();
 				}
 			}
-			drink.setDrinkName(drinkOrder);
+			teadrink.setDrinkName(drinkOrder);
 			System.out.println("What size would you like: 12oz, 16oz, or 24oz?");
 			System.out.println("Please input 12, 16, or 24.");
 			int s = scnr.nextInt();
@@ -101,7 +108,7 @@ public class Tester {
 					s = scnr.nextInt();
 				}
 			}
-			drink.setDrinkSize(s);
+			teadrink.setDrinkSize(s);
 			System.out.println("What topping would you like??");
 			System.out.println("(Please type the exact name case sensitive, type 'No Topping' for no topping.) ");
 			String t = scnr.nextLine();
@@ -111,20 +118,80 @@ public class Tester {
 					t = scnr.nextLine();
 				}
 			}
-			drink.setTopping(t);
+			teadrink.setTopping(t);
 			System.out.println("What percent sweet?");
 			System.out.println("Please input a number 0-100: ");
 			int e = scnr.nextInt();
 			scnr.nextLine();
 			if(e < 0 || e > 100) {
 				while(e < 0 || e > 100) {
-					System.out.println("Invalid input, please input a valid number of espresso shots.");
+					System.out.println("Invalid input, please input a valid percent sweetness.");
 					e = scnr.nextInt();
 				}
 			}
-			drink.setPercentSweet(e);
-			double total = drink.priceDrink();
+			teadrink.setPercentSweet(e);
+			Drink.orderHistory.add(teadrink);
+			total = teadrink.priceDrink();
+			teadrink.setPrice(total);;
+			
+		}
+		
+		System.out.println("Do you have a rewards membership? If so, type YES. If not, and want to create an account, type CREATE. Otherwise, Type NO.");
+		String s = scnr.nextLine();
+		if(s.equalsIgnoreCase("YES")) {
+			System.out.println("Enter your 10 digit account number: ");
+			long acc = scnr.nextLong();
+			Long key = acc;
+			if(Customer.customers.containsKey(key)) {
+				System.out.println("Account succesfully accessed.");
+				System.out.println("You have " + Customer.customers.get(key).getPoints() + " points.");
+				System.out.println("It takes 50 points for a 15% discount reward or 200 points for a free drink reward.");
+				System.out.println("Type 1 for discount reward or 2 for drink reward.");
+				int r = scnr.nextInt();
+				
+				if(r == 1) {
+					total = total*.85;
+				}
+				else if(r == 2) {
+					total = 0;
+				}
+				else {
+					System.out.println("Invalid Input");
+				}
+				System.out.println("Your total is: $" + total);
+				if(choice == 1) {
+					Customer.customers.get(key).individualHistory.add(drink);
+				}
+				else if (choice == 2) {
+					Customer.customers.get(key).individualHistory.add(teadrink);
+				}
+				
+			}
+			
+			else {
+				System.out.println("Account does not exist.");
+				System.out.println("Your total is: $" + total);
+			}
+		
+		}
+		if(s.equalsIgnoreCase("CREATE")) {
+			System.out.println("Enter a 6 digit phone number: ");
+			int p = scnr.nextInt();
+			scnr.nextLine();
+			Customer cust = new Customer(p, total);
+			Customer.addToHashMap(cust.getId(), cust);
+			System.out.println("Account successfully created.");
+			if(choice == 1) {
+				cust.individualHistory.add(drink);
+			}
+			else if (choice == 2) {
+				cust.individualHistory.add(teadrink);
+			}
 			System.out.println("Your total is: $" + total);
 		}
+		if(s.equalsIgnoreCase("NO")) {
+			System.out.println("Your total is: $" + teadrink.getPrice());
+		}
+		
 	}
 }

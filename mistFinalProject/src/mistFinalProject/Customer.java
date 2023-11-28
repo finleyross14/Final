@@ -1,41 +1,33 @@
 package mistFinalProject;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class Customer {
-	private int id;
-	private String name;
+	private long id;
 	private double points; 
 	private int numToppingReward;
 	private int numDiscountReward;
 	private int numDrinkReward;
 	private static int numCustomers;
-  	private static HashSet<Integer> customerIDs = new HashSet<Integer>();
+	protected HashSet<Drink> individualHistory = new HashSet<Drink>();
+  	protected static HashMap<Long, Customer> customers = new HashMap<Long, Customer>();
 			
 	public Customer() {
 		numCustomers++;
 	}
-	public Customer(int i, String n, double p) {
-		customerIDs.add(i);
+	public Customer(long i, double p) {
 		id = i;
-		name = n;
 		points = p;
 		numCustomers++;
 	}
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
-		customerIDs.add(id);
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	public double getPoints() {
@@ -71,42 +63,39 @@ public class Customer {
 	
 	public void printCustomerInfo() {
 		System.out.println("Customer ID: " + id);
-		System.out.println("Customer name: " + name);
 		System.out.println("Points accumulated: " + points);
 		System.out.println("Customer has " + numToppingReward + "free topping rewards.");
 		System.out.println("Customer has " + numDiscountReward + "15% off rewards.");
 		System.out.println("Customer has " + numDrinkReward + "free small drink rewards.");
 	}
 	
-	public void generateToppingReward() {
-		if(points > 50.00) {
-			numToppingReward++;
-			points -= 50.00;
-			System.out.println("Successfully added 1 topping reward.");
-		}
-		else {
-			System.out.println("Insufficient point balance.");
-		}
-	}
-	public void generateDiscountReward() {
+	public int discountReward() {
 		if(points > 50.00) {
 			numDiscountReward++;
 			points -= 50.00;
-			System.out.println("Successfully added 1 discount reward.");
+			System.out.println("Discount reward applied.");
+			return 1;
 		}
 		else {
 			System.out.println("Insufficient point balance.");
+			return 0;
 		}
 	}
-	public void generateDrinkReward() {
+	public int drinkReward() {
 		if(points > 200.00) {
 			numToppingReward++;
 			points -= 200.00;
-			System.out.println("Successfully added 1 drink reward.");
+			System.out.println("Free drink reward applied.");
+			return 1;
 		}
 		else {
 			System.out.println("Insufficient point balance.");
+			return 1;
 		}
+	}
+	
+	public static void addToHashMap(long i, Customer e) {
+		customers.put(i, e);
 	}
 	
 }
