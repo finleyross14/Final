@@ -118,7 +118,7 @@ public class Drink {
 			Long key = acc;
 			if(Customer.customers.containsKey(key)) {
 				System.out.println("Account succesfully accessed.");
-				Thread.sleep(500);
+				Thread.sleep(400);
 				System.out.println("You have " + Customer.customers.get(key).getPoints() + " points.");
 				Thread.sleep(500);
 				System.out.println("It takes 50 points for a 15% discount reward or 200 points for a free drink reward.");

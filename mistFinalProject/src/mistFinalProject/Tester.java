@@ -28,8 +28,5 @@ public class Tester {
 			tea.rewards(scnr, choice, total);
 		}
 		
-		
-		
-		
 	}
 }
